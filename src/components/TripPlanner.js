@@ -17,7 +17,7 @@ const TripPlanner = () => {
 
   const fetchTrips = async (token) => {
     try {
-      const response = await axios.get("http://localhost:5000/api/trips", {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/trips`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTrips(response.data);
@@ -49,7 +49,7 @@ const TripPlanner = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/trips",
+        `${process.env.REACT_APP_BACKEND_URL}/api/trips`,
         { tripName, plan: tripPlan },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -66,7 +66,7 @@ const TripPlanner = () => {
 
   const handleDeleteTrip = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/trips/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/trips/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchTrips(token);
@@ -116,7 +116,7 @@ const TripPlanner = () => {
                   onChange={(e) => handleChange(index, "place", e.target.value)}
                 />
               </td>
-              <td className="border p-2"> {/* ✅ Added Notes Input */}
+              <td className="border p-2"> {/*  Added Notes Input */}
           <input
             type="text"
             className="w-full p-1 border rounded"
