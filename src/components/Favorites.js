@@ -11,7 +11,7 @@ const Favorites = () => {
   // Fetch user's favorite places
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/favorites", {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/favorites`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setFavorites(res.data))

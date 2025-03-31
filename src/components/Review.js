@@ -27,7 +27,7 @@ const Review = () => {
 
   const fetchReviews = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/reviews");
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/reviews`);
       setReviews(response.data);
     } catch (error) {
       console.error("Error fetching reviews:", error.response?.data || error.message);
